@@ -35,21 +35,59 @@ class _LifecycleWidgetState extends State<LifecycleWidget> {
    * Event Click Button Minute
    */
   void onPressButtonMinute() {
-
+    var textNumber1 = textControllerNumber1.text;
+    var textNumber2 = textControllerNumber2.text;
+    setState(() {
+      if (textNumber1.isEmpty || textNumber2.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Data empty")));
+        result = null;
+        return;
+      }
+      setState(() {
+        result = int.parse(textNumber1) - int.parse(textNumber2);
+      });
+    });
   }
 
   /**
    * Event Click Button Multiplication
    */
   void onPressButtonMultiplication() {
-
+    var textNumber1 = textControllerNumber1.text;
+    var textNumber2 = textControllerNumber2.text;
+    setState(() {
+      if (textNumber1.isEmpty || textNumber2.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Data empty")));
+        result = null;
+        return;
+      }
+      setState(() {
+        result = int.parse(textNumber1) * int.parse(textNumber2);
+      });
+    });
   }
 
   /**
    * Event Click Button Divide
    */
   void onPressButtonDivide() {
-
+    var textNumber1 = textControllerNumber1.text;
+    var textNumber2 = textControllerNumber2.text;
+    setState(() {
+      if (textNumber1.isEmpty || textNumber2.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Data empty")));
+        result = null;
+        return;
+      }
+      if (int.parse(textNumber2) == 0) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Number 2 not 0")));
+        result = null;
+        return;
+      }
+      setState(() {
+        result = int.parse(textNumber1) / int.parse(textNumber2);
+      });
+    });
   }
   @override
   Widget build(BuildContext context) {
